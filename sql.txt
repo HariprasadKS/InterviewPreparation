@@ -1,0 +1,83 @@
+
+
+CREATE TABLE HospAdmin(Name VARCHAR2(20),Password VARCHAR2(20),RePassword VARCHAR2(20),ContactNo NUMBER,Address VARCHAR2(40),DOB VARCHAR2(20),Sex VARCHAR2(20));
+
+CREATE TABLE InPatient(PID VARCHAR2(20),Name VARCHAR2(20),Address VARCHAR2(40),Sex varchar2(20),Complaint varchar2(20),Amount NUMBER,ContactNo Number(15),DoctorName VARCHAR2(20),TypeOfPatient varchar2(20),AdmitDate varchar2(20));
+
+CREATE TABLE OutPatient(PID VARCHAR2(20),Name VARCHAR2(20),Address VARCHAR2(40),Sex varchar2(20),Complaint varchar2(20),Amount NUMBER,ContactNo Number(15),DoctorName VARCHAR2(20),TypeOfPatient varchar2(20),AdmitDate varchar2(20));
+
+
+Insert into HospAdmin values("Hari","test","test",997644335,"Bangalore","26-07-1987","Male");
+
+
+INSERT into Employees (EmployeeID,LastName,FirstName,BirthDate,Photo,Notes)
+values (11,'Hari','Prasad','1984-07-26','abc.pic','Testing');
+
+
+
+Update Employees 
+SET Salary='2000'
+where EmployeeID=1;
+
+
+To retrive Second Highest Salary from Employee table:
+SELECT FirstName, MAX(Salary) as Salary FROM Employees Where Salary< (SELECT MAX(Salary) FROM Employees)
+
+//Generic query to retrive the highest salary (Nth Highest Salary)
+SELECT FirstName, MAX(Salary) as Salary FROM Employees as a Where 1=(SELECT COUNT(DISTINCT Salary) FROM Employees as b  where b.Salary >= a.salary)
+
+SELECT * FROM Employees where Salary NOT NULL
+
+
+
+
+SELECT 
+    site_name,
+    name,
+    FILE_MASTER.file_id,
+    site_master.file_id AS active_file_id,
+    FILE_MASTER.created_by,
+    FILE_MASTER.created_date,
+    status,
+    FILE_MASTER.description,
+    FILE_MASTER.file_type
+FROM
+    SITE_MASTER
+        INNER JOIN
+    FILE_MASTER ON SITE_MASTER.site_id = FILE_MASTER.site_id
+ORDER BY created_date DESC
+LIMIT 300
+
+SELECT 
+    site_name,
+    name,
+    FILE_MASTER.file_id,
+    site_master.file_id AS active_file_id,
+    FILE_MASTER.created_date
+FROM
+    SITE_MASTER
+        INNER JOIN
+    FILE_MASTER ON SITE_MASTER.site_id = FILE_MASTER.site_id
+
+WHERE  FILE_MASTER.file_id = site_master.file_id and site_name='laCalandra_June25'
+
+ORDER BY created_date DESC
+LIMIT 300
+
+To delete company names from the database
+
+SET FOREIGN_KEY_CHECKS=0;
+delete from `hydro`.`business_master` where business_type='1'  and created_by='QA Automation'
+SET FOREIGN_KEY_CHECKS=1;
+
+jdbc:mysql://hydro-digital-qa-mysql.mysql.database.azure.com:3306/hydro
+hydroqamysql@hydro-digital-qa-mysql
+DoverDigital123
+hydro-digital-qa-mysql.mysql.database.azure.com
+3306
+
+
+
+How to sort an Employee object using Stream function
+
+
